@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ferienwohnungen – Auswahl</title>
+    <meta name="description" content="Wähle eines der beiden Häuser aus, um zu den Ferienwohnungen, Preisen und zur Buchung zu gelangen." />
+    <link rel="icon" href="/favicon.ico" />
+    <style>
+      /* === Design-Variablen === */
+      :root {
+        --bg: #0b0d10;
+        --card-bg: #12151a;
+        --ink: #e8eaed;
+        --muted: #a0a7b4;
+        --brand: #7cc1ff; /* gern anpassen */
+        --gap: clamp(16px, 3vw, 28px);
+        --radius: 18px;
+        --shadow: 0 8px 30px rgba(0,0,0,.35);
+        --tile-aspect: 3/2; /* Verhältnis der Vorschaubilder -> einheitliche Höhe */
+        --frame: 10px; /* Weißraum-Rahmen um die Bilder, damit unterschiedliche Motive nicht „kleben“ */
+      }
+
+      /* === Reset & Basics === */
+      *, *::before, *::after { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, Noto Sans, "Apple Color Emoji", "Segoe UI Emoji";
+        color: var(--ink);
+        background: radial-gradient(1200px 800px at 20% -10%, #141922, transparent 60%),
+                    radial-gradient(1000px 800px at 110% 10%, #0f141b, transparent 60%),
+                    var(--bg);
+      }
+      a { color: inherit; text-decoration: none; }
+      img { display: block; max-width: 100%; height: auto; }
+
+      /* === Layout === */
+      .wrap {
+        max-width: min(1100px, 94vw);
+        margin: 0 auto;
+        padding: clamp(20px, 4vw, 40px) 0 72px;
+      }
+      header {
+        display: flex; align-items: center; justify-content: space-between;
+        gap: var(--gap);
+        margin-bottom: clamp(14px, 2vw, 24px);
+      }
+      .brand {
+        font-weight: 700; letter-spacing: .2px; font-size: clamp(18px, 2.4vw, 22px);
+      }
+      .subtitle { color: var(--muted); font-size: 0.95rem; }
+
+      /* === Tile Grid === */
+      .tiles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--gap);
+      }
+
+      .tile {
+        position: relative;
+        display: block; /* gesamter Kachelbereich klickbar */
+        background: var(--card-bg);
+        padding: var(--frame); /* bewusster Weißraum-Rahmen zwischen Motiv und Kachelrand */
+        border-radius: calc(var(--radius) + var(--frame));
+        box-shadow: var(--shadow);
+        transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+        outline: 1px solid rgba(255,255,255,.08); /* dezenter Rand für Klarheit */
+        isolation: isolate; /* für korrektes Überlagern von ::after Gradient */
+      }
+      .tile:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; }
+      .tile:hover { transform: translateY(-2px); box-shadow: 0 12px 38px rgba(0,0,0,.45); }
+
+      .tile__media {
+        position: relative;
+        border-radius: var(--radius);
+        overflow: hidden;
+      }
+      .tile__img {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: var(--tile-aspect);
+        object-fit: cover; /* schneidet sauber zu, auch bei unterschiedlichen Perspektiven */
+        object-position: center; /* bei Bedarf je Bild anpassbar */
+        transform: scale(1.0001); /* vermeidet dünne Kanten durch Subpixel-Rundung */
+        filter: saturate(1.02);
+        transition: transform .35s ease;
+      }
+      .tile:hover .tile__img { transform: scale(1.03); }
+
+      /* dunkler Gradient für Textlesbarkeit, selbst bei hellen Bildern */
+      .tile__media::after {
+        content: "";
+        position: absolute; inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,.55) 0%, rgba(0,0,0,.15) 55%, rgba(0,0,0,0) 100%);
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .tile__label {
+        position: absolute;
+        left: 14px; bottom: 14px;
+        z-index: 2;
+        display: inline-flex; align-items: center; gap: .5ch;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: color-mix(in srgb, rgba(0,0,0,.35) 60%, var(--card-bg));
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        color: #fff;
+        font-weight: 700;
+        letter-spacing: .2px;
+        text-shadow: 0 1px 2px rgba(0,0,0,.5);
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,.18);
+      }
+      .tile__label svg { width: 18px; height: 18px; opacity: .9; }
+
+      /* kleines Footer-Menü als Vorschau auf spätere Sektionen (Kontakt/Preise/etc.) */
+      footer {
+        margin-top: clamp(26px, 5vw, 46px);
+        color: var(--muted);
+        font-size: .95rem;
+      }
+      .quicknav {
+        display: flex; flex-wrap: wrap; gap: .75rem 1rem;
+      }
+      .chip {
+        display: inline-flex; align-items: center; gap: .5ch;
+        padding: 8px 12px; border-radius: 999px;
+        background: rgba(255,255,255,.05);
+        outline: 1px solid rgba(255,255,255,.1);
+      }
+      .chip:hover { outline-color: rgba(255,255,255,.25); }
+
+      @media (prefers-reduced-motion: reduce) {
+        .tile, .tile__img { transition: none !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div>
+          <div class="brand">Willkommen bei Ferienwohnungen im Böhmerwald</div>
+          <div class="subtitle">Bitte wähle eines der Häuser aus.</div>
+        </div>
+      </header>
+
+      <!--
+        ✳︎ So nutzt du die Kacheln:
+          - Ersetze href="/haus-a/" bzw. "/haus-b/" durch deine Ziel-URLs oder Unterordner.
+          - Ersetze die <img src> durch deine Hausbilder. Nutze object-position pro Bild, falls der Bildfokus angepasst werden soll.
+          - Passe das sichtbare Label (z. B. „Haus am See“) im <span class="name">…</span> an – das liegt als Text AUF dem Bild.
+          - Der Weißraum-Rahmen (padding: var(--frame)) sorgt dafür, dass unterschiedlich belichtete/skalierte Bilder nicht „aneinanderkleben“.
+      -->
+
+      <main class="tiles" aria-label="Haus-Auswahl">
+        <!-- Haus A -->
+        <a class="tile" href="/haus-a/" aria-label="Zum Haus im Zentrum">
+          <div class="tile__media">
+            <picture>
+              <!-- Optional: moderne Formate; füge deine Quellen ein -->
+              <!-- <source type="image/avif" srcset="/images/haus-a.avif" /> -->
+              <!-- <source type="image/webp" srcset="/images/haus-a.webp" /> -->
+              <img class="tile__img" src="/bilder/haus_im_zentrum/haus_im_zentrum.JPG" alt="Haus im Zentrum" loading="lazy" />
+            </picture>
+            <span class="tile__label" aria-hidden="true">
+              <!-- kleines Haus-Icon -->
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l9 8h-3v8h-5v-5H11v5H6v-8H3l9-8z"/></svg>
+              <span class="name">Haus im Zentrum</span>
+            </span>
+          </div>
+        </a>
+
+        <!-- Haus B -->
+        <a class="tile" href="/haus-b/" aria-label="Haus Sonne">
+          <div class="tile__media">
+            <picture>
+              <!-- <source type="image/avif" srcset="/images/haus-b.avif" /> -->
+              <!-- <source type="image/webp" srcset="/images/haus-b.webp" /> -->
+              <img class="tile__img" src="/bilder/haus_sonne/haus_sonne.jpg" alt="Außenansicht von Haus an den Wiesen" loading="lazy" />
+            </picture>
+            <span class="tile__label" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l9 8h-3v8h-5v-5H11v5H6v-8H3l9-8z"/></svg>
+              <span class="name">Haus an den Wiesen</span>
+            </span>
+          </div>
+        </a>
+      </main>
+
+      <footer>
+        <div class="quicknav" aria-label="Schnellzugriff (kommt später)">
+          <!-- Vorschau auf spätere Seiten; diese Links können später real verdrahtet werden -->
+          <a class="chip" href="#wohnungen">Wohnungen</a>
+          <a class="chip" href="#preise">Preise</a>
+          <a class="chip" href="#kontakt">Kontakt</a>
+          <a class="chip" href="#reservierung">Reservieren</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
