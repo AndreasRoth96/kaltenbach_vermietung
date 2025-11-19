@@ -1,15 +1,16 @@
 <!doctype html>
-<html lang="en">
+<html lang="cs">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Holiday apartments - Selection</title>
-    <meta name="description" content="Select one of the two houses to view the vacation rentals, prices and booking information." />
+    <title>Prázdninové apartmany – Apartman v centru</title>
+    <meta name="description" content="Apartman v centru Nové Hutě 93" />
     <link rel="alternate" href="../de/" hreflang="de">
     <link rel="alternate" href="../en/" hreflang="en">
     <link rel="alternate" href="../cs/" hreflang="cs">
     <link rel="alternate" href="../cs/" hreflang="x-default">
-    <link rel="icon" href="../bilder/favicon.png" />
+    <link rel="icon" href="bilder/favicon.png" />
+    <base href="https://andreasroth96.github.io/kaltenbach_vermietung/"> <!-- Muss vor dem richtigen Deployment entfernt werden! -->
     <style>
       /* === Design-Variablen === */
       :root {
@@ -45,14 +46,76 @@
         margin: 0 auto;
         padding: clamp(16px, 3.5vw, 36px) 0 120px;
       }
-      header {
-        display: flex; 
-        flex-direction: column;
+
+      .page-header{
+        display: flex;
+        flex-wrap: wrap;
         align-items: center;
-        text-align: center;
-        gap: var(--gap);
-        margin-bottom: clamp(14px, 2vw, 36px);
+        justify-content: space-between;
+        gap: 12px 24px;
+        padding-block: 16px;
+        margin-bottom: 8px;
+        border-bottom:1px solid rgba(0,0,0,0.08);
       }
+
+      .brand-block {
+        min-width: 180px;
+      }
+
+      .page-header .brand {
+        font-weight: 700;
+        font-size: clamp(18px, 2.4vw, 22px);
+        color: var(--ink);
+      }
+
+      .page-header .subtitle {
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+
+      main.nav a {
+        position: relative;
+        text-decoration: none;
+        color: var(--ink);
+        padding-bottom: 2px;
+      }
+
+      .main-nav {
+        font-size: 0.9rem;
+      }
+
+      .main-nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background: var(--ink);
+        transition: width 0.2s ease;
+      }
+
+      .breadcrumbs {
+        margin: 8px 0 16px;
+        font-size: 0.85rem;
+        color: var(--muted);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.3ch;
+      }
+
+      .breadcrumbs a {
+        color: var(--muted);
+        text-decoration: none;
+      }
+
+      .breadcrumbs a:hover {
+        color: var(--ink);
+        text-decoration: underline;
+      }
+
       .brand {
         font-weight: 700; letter-spacing: .2px; font-size: clamp(18px, 2.4vw, 22px);
       }
@@ -63,7 +126,7 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: var(--gap);
-        margin-top: clamp(40px, 6vh, 80px)
+        margin-top: clamp(100px, 6vh, 80px)
       }
 
       .tile {
@@ -184,7 +247,7 @@
       }
 
       .site-footer {
-        margin-top: clamp(32px, 5vw, 64px);
+        margin-top: clamp(132px, 5vw, 64px);
         border-top: 1px solid rgba(0, 0, 0, 0.08);
         padding-top: 18px;
         padding-bottom: 32px;
@@ -238,119 +301,52 @@
         width: 100%;
       }
 
-      @media (prefers-reduced-motion: reduce) {
-        .tile, .tile__img { transition: none !important; }
+      @media (max-width: 768px) {
+        .page-header {
+            align-items: flex-start;
+        }
       }
     </style>
   </head>
   <body>
     <div class="wrap">
-      <header>
-        <div>
-          <div class="brand">Welcome to vacation rentals in the Bohemian Forest</div>
-          <div class="subtitle">Please select one of the houses.</div>
-        </div>
-      </header>
+        <header class="page-header">
+            <div class="brand-block">
+            <div class="brand">Apartments Nové Hutě</div>
+            <div class="subtitle">Haus im Zentrum - Nové Hutě 93</div>
+            </div>
+            <nav class="main-nav" aria-label="Hauptnavigation">
+                <a href="/de/">Wohnungen</a>
+                <a href="#preise">Preise</a>
+                <a href="reservierung">Reservierung</a>
+                <a href="#umgebung">Umgebung</a>
+                <a href="#anreise">Anreise</a>
+                <a href="https://www.novehute.cz/novehute/webcam.asp" target="_blank" rel="noopener">Wetterkamera</a>
+            </nav>
+        </header>
+    </div>
 
-      <!--
-        ✳︎ So nutzt du die Kacheln:
-          - Ersetze href="/haus-a/" bzw. "/haus-b/" durch deine Ziel-URLs oder Unterordner.
-          - Ersetze die <img src> durch deine Hausbilder. Nutze object-position pro Bild, falls der Bildfokus angepasst werden soll.
-          - Passe das sichtbare Label (z. B. „Haus am See“) im <span class="name">…</span> an – das liegt als Text AUF dem Bild.
-          - Der Weißraum-Rahmen (padding: var(--frame)) sorgt dafür, dass unterschiedlich belichtete/skalierte Bilder nicht „aneinanderkleben“.
-      -->
+    <nav class="breadcrumbs" aria-label="Brotkrumen">
+        <a href="/de/">Startseite</a>
+        <span aria-hidden="true">></span>
+        <a href="/de/#wohnungen">Wohnungen</a>
+        <span aria-hidden="true">></span>
+        <span aria-current="page">Apartment im Zentrum</span>
+    </nav>
 
-      <nav class="lang-switch" aria-label="Sprachauswahl">
-        <button class="lang-btn" aria-label="Sprache wählen">
-          <span class="flag">
-              <svg viewBox="0 0 60 30" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
-                <title>English</title>
-                <clipPath id="t">
-                  <path d="M0,0 v30 h60 v-30 z"/>
-                </clipPath>
-                <clipPath id="s">
-                  <path d="M30,15 h30 v15 z v-30 h-30 z M0,0 v30 h30 z v-30 h-30 z"/>
-                </clipPath>
-                <g clip-path="url(#t)">
-                  <rect width="60" height="30" fill="#012169"/>
-                  <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
-                  <path d="M0,0 L60,30 M60,0 L0,30" stroke="#c8102e" stroke-width="4" clip-path="url(#s)"/>
-                  <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
-                  <path d="M30,0 v30 M0,15 h60" stroke="#c8102e" stroke-width="6"/>
-                </g>
-              </svg>
-            </span>
-        </button>
-        <div class="lang-menu">
-          <a href="../de/" lang="de" aria-label="Deutsch">
-            <span class="flag" aria-hidden="true">
-            <svg viewBox="0 0 5 3" width="26" height="26" xmlns="http://www.w3.org/2000/svg" role="img">
-              <title>DE</title>
-              <rect width="5" height="3" fill="#000"/>
-              <rect width="5" height="2" y="1" fill="#DD0000"/>
-              <rect width="5" height="1" y="2" fill="#FFCE00"/>
-            </svg>
-          </span>
-          </a>
-          <a href="../cs/" lang="cs" aria-label="Čeština">
-            <span class="flag">
-              <svg viewBox="0 0 3 2" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
-                <title>Čeština</title>
-                <rect width="3" height="2" fill="#fff"/>
-                <rect width="3" height="1" y="1" fill="#d7141a"/>
-                <path d="M0,0 L1.5,1 L0,2 z" fill="#11457e"/>
-              </svg>
-            </span>
-          </a>
-        </div>
-      </nav>
-      <main class="tiles" aria-label="Haus-Auswahl">
-        <!-- Haus A -->
-        <a class="tile" href="/haus-a/" aria-label="Zum Haus im Zentrum">
-          <span class="tile__label" aria-hidden="true">
-              <!-- kleines Haus-Icon -->
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l9 8h-3v8h-5v-5H11v5H6v-8H3l9-8z"/></svg>
-              <span class="name">Apartment in the center</span>
-          <div class="tile__media">
-            <picture>
-              <!-- Optional: moderne Formate; füge deine Quellen ein -->
-              <!-- <source type="image/avif" srcset="/images/haus-a.avif" /> -->
-              <!-- <source type="image/webp" srcset="/images/haus-a.webp" /> -->
-              <img class="tile__img" src="../bilder/haus_im_zentrum/haus_im_zentrum.JPG" alt="Apartment in the center Nove Hute 93" loading="lazy" />
-            </picture>
-            </span>
-          </div>
-        </a>
-
-        <!-- Haus B -->
-        <a class="tile" href="/haus-b/" aria-label="Haus Sonne">
-          <span class="tile__label" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l9 8h-3v8h-5v-5H11v5H6v-8H3l9-8z"/></svg>
-              <span class="name">Apartment House Sun</span>
-            </span>
-          <div class="tile__media">
-            <picture>
-              <!-- <source type="image/avif" srcset="/images/haus-b.avif" /> -->
-              <!-- <source type="image/webp" srcset="/images/haus-b.webp" /> -->
-              <img class="tile__img" src="../bilder/haus_sonne/haus_sonne.JPG" alt="Apartment House Sun Nove Hute 100" loading="lazy" />
-            </picture>
-          </div>
-        </a>
-      </main>
-
-      <footer class="site-footer">
+    <footer class="site-footer">
         <div class="footer-inner">
           <div class="footer-left">
-            <div class="footer-brand">Apartments Nové Hutě</div>
+            <div class="footer-brand">Apartmány Nové Hutě</div>
             <div class="footer-meta">
-              <span id="year"></span> Family Roth - All rights reserved
+              <span id="year"></span> Rodina Roth - Všechna práva vyhrazena
             </div>
             </div>
-            <nav class="footer-nav" aria-label="Legal information and contact details">
-              <a href="/kontakt/">Contact</a>
-              <a href="/impressum/">Legal notice</a>
-              <a href="/datenschutz/">Privacy Policy</a>
-              <a href="/agb/">Rental Terms</a>
+            <nav class="footer-nav" aria-label="Právní informace a kontakt">
+              <a href="/kontakt/">Kontakt</a>
+              <a href="/impressum/">Impressum</a>
+              <a href="/datenschutz/">Prohlášení o ochraně osobních údajů</a>
+              <a href="/agb/">Podmínky pronájmu</a>
             </nav>
             </div>
           </div>
@@ -364,4 +360,4 @@
       });
       </script>
   </body>
-</html>
+  </html>
