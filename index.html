@@ -248,7 +248,7 @@
     <div class="wrap">
       <header>
         <div>
-          <div class="brand">Vítejte v apartmánech na novych hutich</div>
+          <div class="brand">Vítejte v apartmánech na Nových Hutích na Šumavě</div>
           <div class="subtitle">Vyberte si jeden z domů.</div>
         </div>
       </header>
@@ -336,7 +336,7 @@
           <div class="footer-left">
             <div class="footer-brand">Apartmány Nové Hutě</div>
             <div class="footer-meta">
-              <span id="year"></span>Rodina Roth - Všechna práva vyhrazena
+              <span id="year"></span> Rodina Roth - Všechna práva vyhrazena
             </div>
             </div>
             <nav class="footer-nav" aria-label="Právní informace a kontakt">
@@ -350,5 +350,11 @@
         </div>
       </footer>
     </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const el = document.getElementById('year');
+        if (el) el.textContent = new Date().getFullYear();
+      });
+      </script>
   </body>
 </html>

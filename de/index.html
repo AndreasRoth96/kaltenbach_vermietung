@@ -345,9 +345,9 @@
       <footer class="site-footer">
         <div class="footer-inner">
           <div class="footer-left">
-            <div class="footer-brand">Apartmány Nové Hutě</div>
+            <div class="footer-brand">Apartments Nové Hutě</div>
             <div class="footer-meta">
-              <span id="year"></span>Familie Roth - Alle Rechte vorbehalten
+              <span id="year"></span> Familie Roth - Alle Rechte vorbehalten
             </div>
             </div>
             <nav class="footer-nav" aria-label="Rechtliches & Kontakt">
@@ -361,5 +361,11 @@
         </div>
       </footer>
     </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const el = document.getElementById('year');
+        if (el) el.textContent = new Date().getFullYear();
+      });
+      </script>
   </body>
 </html>
