@@ -118,12 +118,6 @@
       }
       .tile__label svg { width: 18px; height: 18px; opacity: .9; }
 
-      /* kleines Footer-Menü als Vorschau auf spätere Sektionen (Kontakt/Preise/etc.) */
-      footer {
-        margin-top: clamp(26px, 5vw, 46px);
-        color: var(--muted);
-        font-size: .95rem;
-      }
       .quicknav {
         display: flex; flex-wrap: wrap; gap: .75rem 1rem;
       }
@@ -187,6 +181,61 @@
         align-items: center;
         justify-content: center;
         text-decoration: none;
+      }
+
+      .site-footer {
+        margin-top: clamp(32px, 5vw, 64px);
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+        padding-top: 18px;
+        padding-bottom: 32px;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .footer-inner {
+        display:flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px 24px;
+      }
+
+      .footer-brand {
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      .footer-meta {
+        opacity: 0.8;
+      }
+
+      .footer-nav {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .footer-nav a {
+        text-decoration: none;
+        color: var(--muted);
+        position: relative;
+        padding-bottom: 2px;
+      }
+
+      .footer-nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 1px;
+        background: var(--ink);
+        transition: width 0.2s ease;
+      }
+
+      .footer-nav a:hover::after,
+      .footer-nav a:focus-visible::after {
+        width: 100%;
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -293,13 +342,22 @@
         </a>
       </main>
 
-      <footer>
-        <div class="quicknav" aria-label="Schnellzugriff (kommt später)">
-          <!-- Vorschau auf spätere Seiten; diese Links können später real verdrahtet werden -->
-          <a class="chip" href="#wohnungen">Wohnungen</a>
-          <a class="chip" href="#preise">Preise</a>
-          <a class="chip" href="#kontakt">Kontakt</a>
-          <a class="chip" href="#reservierung">Reservieren</a>
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <div class="footer-left">
+            <div class="footer-brand">Apartmány Nové Hutě</div>
+            <div class="footer-meta">
+              <span id="year"></span>Familie Roth - Alle Rechte vorbehalten
+            </div>
+            </div>
+            <nav class="footer-nav" aria-label="Rechtliches & Kontakt">
+              <a href="/kontakt/">Kontakt</a>
+              <a href="/impressum/">Impressum</a>
+              <a href="/datenschutz/">Datenschutzerklärung</a>
+              <a href="/agb/">Mietbedingungen</a>
+            </nav>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
