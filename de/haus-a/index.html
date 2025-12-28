@@ -1,444 +1,558 @@
 <!doctype html>
 <html lang="cs">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Apartment im Zentrum</title>
-    <meta name="description" content="Gemütliche Ferienwohnung iim Zentrum von Nové Hutě 93. Informationen zu Wohnungen, Preisen, Reservierungen, Umgebung und Anreise." />
-    <link rel="alternate" href="../de/" hreflang="de">
-    <link rel="alternate" href="../en/" hreflang="en">
-    <link rel="alternate" href="../cs/" hreflang="cs">
-    <link rel="alternate" href="../cs/" hreflang="x-default">
-    <link rel="icon" href="bilder/favicon.png" />
-    <!-- <base href="https://andreasroth96.github.io/kaltenbach_vermietung/"> --> <!-- Muss vor dem richtigen Deployment entfernt werden! -->
-    <style>
-      /* === Design-Variablen === */
-      :root {
-        --bg: #f7f0e6;
-        --card-bg: #ffffff;
-        --ink: #333333;
-        --muted: #6a6a6a;
-        --brand: #7cc1ff; /* gern anpassen */
-        --gap: clamp(16px, 3vw, 28px);
-        --radius: 18px;
-        --shadow: 0 8px 30px rgba(0,0,0,.35);
-        --tile-aspect: 3/2; /* Verhältnis der Vorschaubilder -> einheitliche Höhe */
-        --frame: 10px; /* Weißraum-Rahmen um die Bilder, damit unterschiedliche Motive nicht „kleben“ */
-      }
 
-      /* === Reset & Basics === */
-      *, *::before, *::after { box-sizing: border-box; }
-      html, body { min-height: 100%; }
-      body {
-        margin: 0;
-        font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, Noto Sans, "Apple Color Emoji", "Segoe UI Emoji";
-        color: var(--ink);
-        background: radial-gradient(900px 600px at 20% 0%, #ffffff, transparent 70%),
-                    radial-gradient(1100px 700px at 110% 30%, #e8dcc9, transparent 70%),
-                    var(--bg);
-      }
-      a { color: inherit; text-decoration: none; }
-      img { display: block; max-width: 100%; height: auto; }
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Apartment im Zentrum</title>
+  <meta name="description"
+    content="Gemütliche Ferienwohnung iim Zentrum von Nové Hutě 93. Informationen zu Wohnungen, Preisen, Reservierungen, Umgebung und Anreise." />
+  <link rel="alternate" href="../de/" hreflang="de">
+  <link rel="alternate" href="../en/" hreflang="en">
+  <link rel="alternate" href="../cs/" hreflang="cs">
+  <link rel="alternate" href="../cs/" hreflang="x-default">
+  <link rel="icon" href="bilder/favicon.png" />
+  <!-- <base href="https://andreasroth96.github.io/kaltenbach_vermietung/"> -->
+  <!-- Muss vor dem richtigen Deployment entfernt werden! -->
+  <style>
+    /* === Design-Variablen === */
+    :root {
+      --bg: #f7f0e6;
+      --card-bg: #ffffff;
+      --ink: #333333;
+      --muted: #6a6a6a;
+      --brand: #7cc1ff;
+      /* gern anpassen */
+      --gap: clamp(16px, 3vw, 28px);
+      --radius: 18px;
+      --shadow: 0 8px 30px rgba(0, 0, 0, .35);
+      --tile-aspect: 3/2;
+      /* Verhältnis der Vorschaubilder -> einheitliche Höhe */
+      --frame: 10px;
+      /* Weißraum-Rahmen um die Bilder, damit unterschiedliche Motive nicht „kleben“ */
+    }
 
-      /* === Layout === */
-      .wrap {
-        max-width: min(1600px, 96vw);
-        margin: 0 auto;
-        /*padding: clamp(16px, 3.5vw, 36px) 0 120px;*/
-        padding-top: 2px;
-      }
+    /* === Reset & Basics === */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
 
-      .hero {
-        padding: 0;
-        display: block;
-        margin-top: 0;
-        border-radius: 0;
-        top: 0;
-        width: 100vw;
-        height: 70vh;
-        pointer-events: none;
-        position: relative;
-      }
+    html,
+    body {
+      min-height: 100%;
+    }
 
-      /*.hero__text {
+    body {
+      margin: 0;
+      font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, Noto Sans, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--ink);
+      background: radial-gradient(900px 600px at 20% 0%, #ffffff, transparent 70%),
+        radial-gradient(1100px 700px at 110% 30%, #e8dcc9, transparent 70%),
+        var(--bg);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* === Layout === */
+    .wrap {
+      max-width: min(1600px, 96vw);
+      margin: 0 auto;
+      /*padding: clamp(16px, 3.5vw, 36px) 0 120px;*/
+      padding-top: 2px;
+    }
+
+    .hero {
+      padding: 0;
+      display: block;
+      margin-top: 0;
+      border-radius: 0;
+      top: 0;
+      width: 100vw;
+      height: 70vh;
+      pointer-events: none;
+      position: relative;
+    }
+
+    /*.hero__text {
         color: #3b2a19;
       }*/
 
-      .hero__title {
-        margin: 0 0 8px;
-        font-size: clamp(1.6rem, 2.4vw, 2rem);
-      }
+    .hero__title {
+      margin: 0 0 8px;
+      font-size: clamp(1.6rem, 2.4vw, 2rem);
+    }
 
-      .hero__subtitle {
-        margin: 0 0 12px;
-        font-size: 0.98rem;
-      }
+    .hero__subtitle {
+      margin: 0 0 12px;
+      font-size: 0.98rem;
+    }
 
-      .hero__highlights {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        font-size: 0.92rem;
-      }
+    .hero__highlights {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.92rem;
+    }
 
-      .hero__highlights li::before {
-        content: "-";
-        margin-right: 0.4ch;
-      }
+    .hero__highlights li::before {
+      content: "-";
+      margin-right: 0.4ch;
+    }
 
-      .hero__image {
-        border-radius: calc(var(--radius) - 2px);
-        overflow: hidden;
-        background: #000;
-        height: 100%;
-        position: relative;
-        /*max-height: 260px;*/
-      }
+    .hero__image {
+      border-radius: calc(var(--radius) - 2px);
+      overflow: hidden;
+      background: #000;
+      height: 100%;
+      position: relative;
+      /*max-height: 260px;*/
+    }
 
-      .hero__image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+    .hero__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-      .hero__caption {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-end;
-        text-align: center;
-        padding-bottom: clamp(30px, 6vh, 56px);
-        color:rgb(249, 204, 26);
-        text-shadow: 0 3px 12px rgba(0, 0, 0, .75);
-      }
+    /*.hero__caption {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: center;
+      padding-bottom: clamp(30px, 6vh, 56px);
+      color: rgb(249, 204, 26);
+      text-shadow: 0 3px 12px rgba(0, 0, 0, .75);
+    }
 
-      .hero__caption .subtitle {
-        margin-top: 6px;
-        font-size: clamp(1rem, 1.6vw, 1.15rem);
-        /*color: #1f6f3b;*/
-        color: #ffffff;
+    .hero__caption .subtitle {
+      margin-top: 6px;
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      /*color: #1f6f3b;
+      color: #ffffff;
 
-        font-weight: 700;
-      }
+      font-weight: 700;
+    }
 
-      .hero__caption .brand {
-        font-size: clamp(1.8rem, 3vw, 2.4rem);
-        font-weight: 700;
-        letter-spacing: .3px;
-      }
+    .hero__caption .brand {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: .3px;
+    } */
 
-      /*.hero__image {
+    .hero-intro {
+  max-width: min(1600px, 96vw);
+  margin: 28px auto 12px;
+  padding: 0 24px;
+}
+
+.hero-title {
+  margin: 0;
+  font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  color: #1f6f3b;
+}
+
+.hero-subtitle {
+  margin-top: 6px;
+  font-size: 1rem;
+  color: var(--muted);
+  color: #3a9879;
+}
+
+
+    /*.hero__image {
         order: -1;
         max-height: 220px;
       }*/
 
-      .page-header{
-        background: #1f6f3b; 
-        color: #f4f7f2;
-        border-bottom: none;
-        padding: 3px 1px;
-        margin: 0;
-        border-radius: var(--radius);
-        width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  position: sticky;
-  top: 0;
-      }
+    .page-header {
+      background: #1f6f3b;
+      color: #f4f7f2;
+      border-bottom: none;
+      padding: 18px 24px;
+      margin: 0;
+      border-radius: var(--radius);
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      position: sticky;
+      top: 0;
+    }
 
-      .brand-block {
-        min-width: 180px;
-      }
+    .brand-block {
+      min-width: 180px;
+    }
 
-      .page-header .brand {
-        font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
-        font-size: clamp(22px, 2.6vw, 30px);
-  font-weight: 700;
-  letter-spacing: .2px;
-  color: #ffffff;
-      }
+    .page-header .brand {
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      font-size: clamp(22px, 2.6vw, 30px);
+      font-weight: 700;
+      letter-spacing: .2px;
+      color: #ffffff;
+    }
 
-      .page-header .subtitle {
-        margin-top: 4px;
-  font-size: 0.98rem;
-  color: rgba(244,247,242,.85);
-      }
+    .page-header .subtitle {
+      margin-top: 4px;
+      font-size: 0.98rem;
+      color: rgba(244, 247, 242, .85);
+    }
 
 
-      main.nav a {
-        position: relative;
-        text-decoration: none;
-        color: var(--ink);
-        padding-bottom: 2px;
-      }
 
-      @media (max-width: 768px) {
-        .page-header {
-          align-items: flex-start;
-        }
-        .main-nav {
-          font-size: 0.9rem;
-        }
+
+    main.nav a {
+      position: relative;
+      text-decoration: none;
+      color: var(--ink);
+      padding-bottom: 2px;
+    }
+
+    @media (max-width: 768px) {
+      .page-header {
+        align-items: flex-start;
       }
 
       .main-nav {
+        display:flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
         font-size: 0.9rem;
-        margin-left: clamp(6px, 2vw, 32px);
+        margin-left: 0;
       }
+    }
 
-      .main-nav a {
-        color: rgba(244,247,242,.92);
-  padding: 8px 10px;
-  border-radius: 999px;
-      }
+    .main-nav {
+      font-size: 0.9rem;
+      margin-left: clamp(6px, 2vw, 32px);
+    }
 
-      .main-nav a:hover,
-.main-nav a:focus-visible{
-  background: rgba(255,255,255,.12);
-  outline: none;
+    .main-nav a {
+      color: rgba(244, 247, 242, .92);
+      padding: 8px 10px;
+      border-radius: 999px;
+    }
+
+    .main-nav a:hover,
+    .main-nav a:focus-visible {
+      background: rgba(255, 255, 255, .12);
+      outline: none;
+    }
+
+    .main-nav a.nav-right {
+      margin-left: auto;
+      color: rgb(249, 204, 26);
+    }
+
+    @media (max-width: 768px){
+  .main-nav {
+    flex-wrap: wrap;
+  } 
+  .main-nav a.nav-right{ margin-left: 0; }
 }
 
-      .main-nav a::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 0;
-        height: 2px;
-        background: var(--ink);
-        transition: width 0.2s ease;
-        
-      }
+    .main-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--ink);
+      transition: width 0.2s ease;
 
-      .breadcrumbs {
-        margin: 8px 0 16px;
-        font-size: 0.85rem;
-        color: var(--muted);
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 0.3ch;
-        color: #ffffff;
-        margin-left: clamp(16px, 4vw, 32px);
-      }
+    }
 
-      .breadcrumbs a {
-        color: var(--muted);
-        text-decoration: none;
-        color: #ffffff;
-      }
+    .page-header .breadcrumbs {
+      max-width: min(1600px, 96vw);
+      margin: 8px auto 0;
+      padding: 0 24px;
+    }
 
-      .breadcrumbs a:hover {
-        color: var(--ink);
-        text-decoration: underline;
-      }
 
-      .brand {
-        font-weight: 700; letter-spacing: .2px; font-size: clamp(18px, 2.4vw, 22px);
-      }
-      .subtitle { color: var(--muted); font-size: 0.95rem; }
 
-      /* === Tile Grid === */
-      .tiles {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: var(--gap);
-        margin-top: clamp(100px, 6vh, 80px)
-      }
+    .breadcrumbs {
+      margin: 8px 0 16px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.3ch;
+      color: #1f6f3b;
+      margin-left: clamp(24px, 12vw, 32px);
+    }
 
-      .tile {
-        position: relative;
-        display: block; /* gesamter Kachelbereich klickbar */
-        background: var(--card-bg);
-        padding: var(--frame); /* bewusster Weißraum-Rahmen zwischen Motiv und Kachelrand */
-        border-radius: calc(var(--radius) + var(--frame));
-        box-shadow: var(--shadow);
-        transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
-        outline: 1px solid rgba(255,255,255,.08); /* dezenter Rand für Klarheit */
-        isolation: isolate; /* für korrektes Überlagern von ::after Gradient */
-      }
-      .tile:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; }
-      .tile:hover { transform: translateY(-2px); box-shadow: 0 12px 38px rgba(0,0,0,.45); }
+    .breadcrumbs a {
+      color: var(--muted);
+      text-decoration: none;
+      color: #1f6f3b;
+    }
 
-      .tile__media {
-        position: relative;
-        border-radius: var(--radius);
-        overflow: hidden;
-      }
-      .tile__img {
-        width: 100%;
-        height: 100%;
-        aspect-ratio: var(--tile-aspect);
-        object-fit: cover; /* schneidet sauber zu, auch bei unterschiedlichen Perspektiven */
-        object-position: center; /* bei Bedarf je Bild anpassbar */
-        transform: scale(1.0001); /* vermeidet dünne Kanten durch Subpixel-Rundung */
-        filter: saturate(1.02);
-        transition: transform .35s ease;
-      }
-      .tile:hover .tile__img { transform: scale(1.03); }
+    .breadcrumbs a:hover {
+      color: var(--ink);
+      text-decoration: underline;
+    }
 
-      /* dunkler Gradient für Textlesbarkeit, selbst bei hellen Bildern */
-      .tile__media::after {
-        content: "";
-        position: absolute; inset: 0;
-        background: linear-gradient(to top, rgba(0,0,0,.55) 0%, rgba(0,0,0,.15) 55%, rgba(0,0,0,0) 100%);
-        pointer-events: none;
-        z-index: 1;
-      }
+    .brand {
+      font-weight: 700;
+      letter-spacing: .2px;
+      font-size: clamp(18px, 2.4vw, 22px);
+    }
 
-      .tile__label {
-        position: static;
-        background: none;
-        box-shadow: none;
-        padding: 0;
-        margin-bottom: 8px;
-        color: var(--ink);
-        font-size: 1.1rem;
-        font-weight: 700;
-      }
-      .tile__label svg { width: 18px; height: 18px; opacity: .9; }
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
 
-      .quicknav {
-        display: flex; flex-wrap: wrap; gap: .75rem 1rem;
-      }
-      .chip {
-        display: inline-flex; align-items: center; gap: .5ch;
-        padding: 8px 12px; border-radius: 999px;
-        background: rgba(255,255,255,.05);
-        outline: 1px solid rgba(255,255,255,.1);
-      }
-      .chip:hover { outline-color: rgba(255,255,255,.25); }
+    /* === Tile Grid === */
+    .tiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--gap);
+      margin-top: clamp(100px, 6vh, 80px)
+    }
 
-      .lang-switch {
-        position: fixed;
-        top: 16px;
-        right: min(3vw, 24px);
-        z-index: 50;
-      }
+    .tile {
+      position: relative;
+      display: block;
+      /* gesamter Kachelbereich klickbar */
+      background: var(--card-bg);
+      padding: var(--frame);
+      /* bewusster Weißraum-Rahmen zwischen Motiv und Kachelrand */
+      border-radius: calc(var(--radius) + var(--frame));
+      box-shadow: var(--shadow);
+      transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+      outline: 1px solid rgba(255, 255, 255, .08);
+      /* dezenter Rand für Klarheit */
+      isolation: isolate;
+      /* für korrektes Überlagern von ::after Gradient */
+    }
 
-      .lang-btn {
-        all: unset;
-        cursor: pointer;
-      }
+    .tile:focus-visible {
+      outline: 2px solid var(--brand);
+      outline-offset: 3px;
+    }
 
-      .flag {
-        width: 32px;
-        height: 25px;
-        border-radius: 2px;
-        overflow: hidden;
-        display: inline-block;
-        box-shadow: none;
-        background: transparent;
-        transition: transform .2s ease;
-      }
+    .tile:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 38px rgba(0, 0, 0, .45);
+    }
 
-      .flag:hover {
-        transform: translateY(-1px);
-      }
+    .tile__media {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
 
-      .lang-menu {
-        position: absolute;
-        right: 0px;
-        top: 36px;
-        display: none;
-        flex-direction: column;
-        gap: 6px;
-        background: rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        padding: 8px;
-        border-radius: 6px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-      }
+    .tile__img {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: var(--tile-aspect);
+      object-fit: cover;
+      /* schneidet sauber zu, auch bei unterschiedlichen Perspektiven */
+      object-position: center;
+      /* bei Bedarf je Bild anpassbar */
+      transform: scale(1.0001);
+      /* vermeidet dünne Kanten durch Subpixel-Rundung */
+      filter: saturate(1.02);
+      transition: transform .35s ease;
+    }
 
-      .lang-switch:hover .lang-menu,
-      .lang-switch:focus-within .lang-menu {
-        display: flex;
-      }
+    .tile:hover .tile__img {
+      transform: scale(1.03);
+    }
 
-      .lang-menu a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-      }
+    /* dunkler Gradient für Textlesbarkeit, selbst bei hellen Bildern */
+    .tile__media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, .55) 0%, rgba(0, 0, 0, .15) 55%, rgba(0, 0, 0, 0) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
 
-      section {
-        scroll-margin-top: 90px;
-      }
+    .tile__label {
+      position: static;
+      background: none;
+      box-shadow: none;
+      padding: 0;
+      margin-bottom: 8px;
+      color: var(--ink);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
 
-      h1{
-        color: #1f6f3b;
-      }
+    .tile__label svg {
+      width: 18px;
+      height: 18px;
+      opacity: .9;
+    }
 
-      .site-footer {
-        margin-top: clamp(132px, 5vw, 64px);
-        border-top: 1px solid rgba(0, 0, 0, 0.08);
-        padding-top: 18px;
-        padding-bottom: 32px;
-        font-size: 0.9rem;
-        color: var(--muted);
-      }
+    .quicknav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem 1rem;
+    }
 
-      .footer-inner {
-        display:flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px 24px;
-      }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .5ch;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .05);
+      outline: 1px solid rgba(255, 255, 255, .1);
+    }
 
-      .footer-brand {
-        font-weight: 600;
-        color: var(--ink);
-      }
+    .chip:hover {
+      outline-color: rgba(255, 255, 255, .25);
+    }
 
-      .footer-meta {
-        opacity: 0.8;
-      }
+    .lang-switch {
+      position: fixed;
+      top: 16px;
+      right: min(3vw, 24px);
+      z-index: 50;
+    }
 
-      .footer-nav {
-        display: inline-flex;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
+    .lang-btn {
+      all: unset;
+      cursor: pointer;
+    }
 
-      .footer-nav a {
-        text-decoration: none;
-        color: var(--muted);
-        position: relative;
-        padding-bottom: 2px;
-      }
+    .flag {
+      width: 32px;
+      height: 25px;
+      border-radius: 2px;
+      overflow: hidden;
+      display: inline-block;
+      box-shadow: none;
+      background: transparent;
+      transition: transform .2s ease;
+    }
 
-      .footer-nav a::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 0;
-        height: 1px;
-        background: var(--ink);
-        transition: width 0.2s ease;
-      }
+    .flag:hover {
+      transform: translateY(-1px);
+    }
 
-      .footer-nav a:hover::after,
-      .footer-nav a:focus-visible::after {
-        width: 100%;
-      }
+    .lang-menu {
+      position: absolute;
+      right: 0px;
+      top: 36px;
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 8px;
+      border-radius: 6px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
 
-      /*@media (max-width: 768px) {
+    .lang-switch:hover .lang-menu,
+    .lang-switch:focus-within .lang-menu {
+      display: flex;
+    }
+
+    .lang-menu a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    section {
+      scroll-margin-top: 90px;
+    }
+
+    h1 {
+      color: #1f6f3b;
+    }
+
+    .site-footer {
+      margin-top: clamp(132px, 5vw, 64px);
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      padding-top: 18px;
+      padding-bottom: 32px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px 24px;
+    }
+
+    .footer-brand {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .footer-meta {
+      opacity: 0.8;
+    }
+
+    .footer-nav {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-nav a {
+      text-decoration: none;
+      color: var(--muted);
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .footer-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--ink);
+      transition: width 0.2s ease;
+    }
+
+    .footer-nav a:hover::after,
+    .footer-nav a:focus-visible::after {
+      width: 100%;
+    }
+
+    /*@media (max-width: 768px) {
         .hero {
             order: -1;
             max-height: 220px;
         }
       }*/
-    </style>
-  </head>
-  <body>
-    <section class="hero">
-        <!-- <div class="hero__text">
+  </style>
+</head>
+
+<body>
+  <section class="hero">
+    <!-- <div class="hero__text">
             <h1 class="hero__title">Apartment im Zentrum - Nové Hutě 93</h1>
             <p class="hero__subtitle">
                 Gemütliches Apartmenthaus im Herzen von Nové Hutě/Kaltenbach. Ideal für Familien, Paare und Freunde, nur wenige Minuten von Loipen und Wanderwegen oder Radwegen entfernt.
@@ -449,150 +563,162 @@
                 <li>Skigebiet und Wanderwege in unmittelbarer Nähe</li>
             </ul>
         </div> -->
-        <div class="hero__image">
-            <img src="../../bilder/haus_im_zentrum/haus_im_zentrum.JPG" alt="Ansicht des Hauses im Zentrum in Nové Hutě 93" loading="lazy">
-            <div class="hero__caption">
-            <div class="brand">Apartments Nové Hutě</div>
-            <div class="subtitle">Haus im Zentrum - Nové Hutě 93</div>
-            </div>
-        </div>
-    </section>
-    <div class="wrap">
-        <header class="page-header">
-          
-            <nav class="main-nav" aria-label="Hauptnavigation">
-                <a href="#wohnungen">Wohnungen</a>
-                <a href="#preise">Preise</a>
-                <a href="#reservierung">Reservierung</a>
-                <a href="#umgebung">Umgebung</a>
-                <a href="#anreise">Anreise</a>
-                <a href="https://www.novehute.cz/novehute/webcam.asp" target="_blank" rel="noopener">Wetterkamera</a>
-            </nav>
-            <nav class="breadcrumbs" aria-label="Brotkrumen">
+    <div class="hero__image">
+      <img src="../../bilder/haus_im_zentrum/haus_im_zentrum.JPG" alt="Ansicht des Hauses im Zentrum in Nové Hutě 93"
+        loading="lazy">
+      
+    </div>
+  </section>
+  <div class="wrap">
+    <header class="page-header">
+      <nav class="main-nav" aria-label="Hauptnavigation">
+        <a href="#wohnungen">Wohnungen</a>
+        <a href="#preise">Preise</a>
+        <a href="#reservierung">Reservierung</a>
+        <a href="#umgebung">Umgebung</a>
+        <a href="#anreise">Anreise</a>
+        <a href="https://www.novehute.cz/novehute/webcam.asp" target="_blank" rel="noopener">Wetterkamera</a>
+        <a href="../haus-b/index.html" class="nav-right">Zum Haus Sonne</a>
+      </nav>
+    </header>
+
+    <div class="hero-intro">
+        <h1 class="hero-title">Apartments Nové Hutě</h1>
+        <h2 class="hero-subtitle">Apartment im Zentrum - Nové Hutě 93</h2>
+      </div>
+    
+    <nav class="breadcrumbs" aria-label="Brotkrumen">
         <a href="/de/">Startseite</a>
         <span aria-hidden="true">></span>
         <span aria-current="page">Apartment im Zentrum</span>
-    </nav>
-        </header>
-    
-
-    <nav class="lang-switch" aria-label="Sprachauswahl">
-        <button class="lang-btn" aria-label="Sprache wählen">
-          <span class="flag" aria-hidden="true">
-            <svg viewBox="0 0 5 3" width="26" height="26" xmlns="http://www.w3.org/2000/svg" role="img">
-              <title>DE</title>
-              <rect width="5" height="3" fill="#000"/>
-              <rect width="5" height="2" y="1" fill="#DD0000"/>
-              <rect width="5" height="1" y="2" fill="#FFCE00"/>
-            </svg>
-          </span>
-        </button>
-        <div class="lang-menu">
-          <a href="../en/" lang="en" aria-label="English">
-            <span class="flag">
-              <svg viewBox="0 0 60 30" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
-                <title>English</title>
-                <clipPath id="t">
-                  <path d="M0,0 v30 h60 v-30 z"/>
-                </clipPath>
-                <clipPath id="s">
-                  <path d="M30,15 h30 v15 z v-30 h-30 z M0,0 v30 h30 z v-30 h-30 z"/>
-                </clipPath>
-                <g clip-path="url(#t)">
-                  <rect width="60" height="30" fill="#012169"/>
-                  <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
-                  <path d="M0,0 L60,30 M60,0 L0,30" stroke="#c8102e" stroke-width="4" clip-path="url(#s)"/>
-                  <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
-                  <path d="M30,0 v30 M0,15 h60" stroke="#c8102e" stroke-width="6"/>
-                </g>
-              </svg>
-            </span>
-          </a>
-          <a href="../cs/" lang="cs" aria-label="Čeština">
-            <span class="flag">
-              <svg viewBox="0 0 3 2" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
-                <title>Čeština</title>
-                <rect width="3" height="2" fill="#fff"/>
-                <rect width="3" height="1" y="1" fill="#d7141a"/>
-                <path d="M0,0 L1.5,1 L0,2 z" fill="#11457e"/>
-              </svg>
-            </span>
-          </a>
-        </div>
       </nav>
 
-      <h1>Ferienwohnung im Böhmerwald (Šumava) - Urlaub in Nové Hutě inmitten der Natur</h1>
-      <p>Willkommen in unserer Ferienwohnung im Böhmerwald, im ruhigen Ort Nové Hutě in Tschechien. Unser Haus liegt direkt am Rand des Landschafts- und Naturschutzgebiets Šumava und bietet ideale Voraussetzungen für einen erholsamen und zugleich aktiven Urlaub – zu jeder Jahreszeit.</p>
-      <p>Im Winter erreichen Sie Skipisten und Langlaufloipen in wenigen Minuten. Der Einstieg in die bekannte Šumava-Langlaufmagistrale (Bílá stopa) befindet sich direkt vor Ort. In Frühling, Sommer und Herbst laden zahlreiche Wanderwege, Radstrecken und Naturpfade dazu ein, den Böhmerwald zu Fuß oder mit dem Fahrrad zu entdecken.</p>
-      <p>Unsere Ferienwohnungen in Nové Hutě sind der perfekte Rückzugsort für alle, die Ruhe, Natur und frische Luft suchen. Abseits von Massentourismus genießen Sie hier Entspannung, klare Bergluft und eine ursprüngliche Landschaft – ideal für Paare, Familien und Naturliebhaber.</p>
-      <p>Ob Kurzurlaub, Wochenaufenthalt oder längere Auszeit: Ein Urlaub im Böhmerwald verbindet Erholung, Bewegung und Naturerlebnis auf besondere Weise.</p>
-      
-      <section id="wohnungen">
-        <h1>Wohnungen</h1>
-        <p>Text Text Text Text Text Text Text Text</p>
-      </section>
-      <section id="preise">
-        <h1>Preise</h1>
-        <p>Text Text Text Text Text Text Text Text</p>
-      </section>
-      <section id="reservierung">
-        <h1>Reservierung</h1>
-        <p>Text Text Text Text Text Text Text Text</p>
-      </section>
-      <section id="umgebung">
-        <h1>Umgebung</h1>
-        <p>Text Text Text Text Text Text Text Text</p>
-      </section>
-      <section id="anreise">
-        <h1>Anreise</h1>
-        <p>Text Text Text Text Text Text Text Text</p>
-      </section>
+    <nav class="lang-switch" aria-label="Sprachauswahl">
+      <button class="lang-btn" aria-label="Sprache wählen">
+        <span class="flag" aria-hidden="true">
+          <svg viewBox="0 0 5 3" width="26" height="26" xmlns="http://www.w3.org/2000/svg" role="img">
+            <title>DE</title>
+            <rect width="5" height="3" fill="#000" />
+            <rect width="5" height="2" y="1" fill="#DD0000" />
+            <rect width="5" height="1" y="2" fill="#FFCE00" />
+          </svg>
+        </span>
+      </button>
+      <div class="lang-menu">
+        <a href="../en/" lang="en" aria-label="English">
+          <span class="flag">
+            <svg viewBox="0 0 60 30" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+              <title>English</title>
+              <clipPath id="t">
+                <path d="M0,0 v30 h60 v-30 z" />
+              </clipPath>
+              <clipPath id="s">
+                <path d="M30,15 h30 v15 z v-30 h-30 z M0,0 v30 h30 z v-30 h-30 z" />
+              </clipPath>
+              <g clip-path="url(#t)">
+                <rect width="60" height="30" fill="#012169" />
+                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6" />
+                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#c8102e" stroke-width="4" clip-path="url(#s)" />
+                <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10" />
+                <path d="M30,0 v30 M0,15 h60" stroke="#c8102e" stroke-width="6" />
+              </g>
+            </svg>
+          </span>
+        </a>
+        <a href="../cs/" lang="cs" aria-label="Čeština">
+          <span class="flag">
+            <svg viewBox="0 0 3 2" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+              <title>Čeština</title>
+              <rect width="3" height="2" fill="#fff" />
+              <rect width="3" height="1" y="1" fill="#d7141a" />
+              <path d="M0,0 L1.5,1 L0,2 z" fill="#11457e" />
+            </svg>
+          </span>
+        </a>
+      </div>
+    </nav>
+
+    <h1>Ferienwohnung im Böhmerwald (Šumava) - Urlaub in Nové Hutě inmitten der Natur</h1>
+    <p>Willkommen in unserer Ferienwohnung im Böhmerwald, im ruhigen Ort Nové Hutě in Tschechien. Unser Haus liegt
+      direkt am Rand des Landschafts- und Naturschutzgebiets Šumava und bietet ideale Voraussetzungen für einen
+      erholsamen und zugleich aktiven Urlaub – zu jeder Jahreszeit.</p>
+    <p>Im Winter erreichen Sie Skipisten und Langlaufloipen in wenigen Minuten. Der Einstieg in die bekannte
+      Šumava-Langlaufmagistrale (Bílá stopa) befindet sich direkt vor Ort. In Frühling, Sommer und Herbst laden
+      zahlreiche Wanderwege, Radstrecken und Naturpfade dazu ein, den Böhmerwald zu Fuß oder mit dem Fahrrad zu
+      entdecken.</p>
+    <p>Unsere Ferienwohnungen in Nové Hutě sind der perfekte Rückzugsort für alle, die Ruhe, Natur und frische Luft
+      suchen. Abseits von Massentourismus genießen Sie hier Entspannung, klare Bergluft und eine ursprüngliche
+      Landschaft – ideal für Paare, Familien und Naturliebhaber.</p>
+    <p>Ob Kurzurlaub, Wochenaufenthalt oder längere Auszeit: Ein Urlaub im Böhmerwald verbindet Erholung, Bewegung und
+      Naturerlebnis auf besondere Weise.</p>
+
+    <section id="wohnungen">
+      <h1>Wohnungen</h1>
+      <p>Text Text Text Text Text Text Text Text</p>
+    </section>
+    <section id="preise">
+      <h1>Preise</h1>
+      <p>Text Text Text Text Text Text Text Text</p>
+    </section>
+    <section id="reservierung">
+      <h1>Reservierung</h1>
+      <p>Text Text Text Text Text Text Text Text</p>
+    </section>
+    <section id="umgebung">
+      <h1>Umgebung</h1>
+      <p>Text Text Text Text Text Text Text Text</p>
+    </section>
+    <section id="anreise">
+      <h1>Anreise</h1>
+      <p>Text Text Text Text Text Text Text Text</p>
+    </section>
     <footer class="site-footer">
-        <div class="footer-inner">
-          <div class="footer-left">
-            <div class="footer-brand">Apartmány Nové Hutě</div>
-            <div class="footer-meta">
-              <span id="year"></span> Familie Roth - Alle Rechte vorenthalten
-            </div>
-            </div>
-            <nav class="footer-nav" aria-label="Právní informace a kontakt">
-              <a href="/kontakt/">Kontakt</a>
-              <a href="/impressum/">Impressum</a>
-              <a href="/datenschutz/">Datenschutzerklärung</a>
-              <a href="/agb/">AGB</a>
-            </nav>
-            </div>
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="footer-brand">Apartmány Nové Hutě</div>
+          <div class="footer-meta">
+            <span id="year"></span> Familie Roth - Alle Rechte vorenthalten
           </div>
         </div>
-      </footer>
+        <nav class="footer-nav" aria-label="Právní informace a kontakt">
+          <a href="/kontakt/">Kontakt</a>
+          <a href="/impressum/">Impressum</a>
+          <a href="/datenschutz/">Datenschutzerklärung</a>
+          <a href="/agb/">AGB</a>
+        </nav>
       </div>
-    <script>
-  (() => {
-    const hero = document.querySelector('.hero');
-    if (!hero) return;
+  </div>
+  </div>
+  </footer>
+  </div>
+  <script>
+    (() => {
+      const hero = document.querySelector('.hero');
+      if (!hero) return;
 
-    const maxH = () => Math.round(window.innerHeight * 0.70); // 70vh
-    const minH = 140; // px (deine „Header-Höhe“)
-    const shrinkRange = 240; // px Scrollstrecke bis vollständig klein
+      const maxH = () => Math.round(window.innerHeight * 0.70); // 70vh
+      const minH = 140; // px (deine „Header-Höhe“)
+      const shrinkRange = 240; // px Scrollstrecke bis vollständig klein
 
-    function onScroll() {
-      const y = Math.max(0, window.scrollY);
-      const t = Math.min(1, y / shrinkRange);
-      const h = Math.round(maxH() - (maxH() - minH) * t);
-      hero.style.height = h + 'px';
-    }
+      function onScroll() {
+        const y = Math.max(0, window.scrollY);
+        const t = Math.min(1, y / shrinkRange);
+        const h = Math.round(maxH() - (maxH() - minH) * t);
+        hero.style.height = h + 'px';
+      }
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    onScroll();
-  })();
-</script>
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      onScroll();
+    })();
+  </script>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const el = document.getElementById('year');
-        if (el) el.textContent = new Date().getFullYear();
-      });
-      </script>
-  </body>
-  </html>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const el = document.getElementById('year');
+      if (el) el.textContent = new Date().getFullYear();
+    });
+  </script>
+</body>
+
+</html>
