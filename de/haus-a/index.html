@@ -138,12 +138,14 @@
         background: #1f6f3b; 
         color: #f4f7f2;
         border-bottom: none;
-        padding: 18px 1px;
+        padding: 3px 1px;
         margin: 0;
         border-radius: var(--radius);
         width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
+  position: sticky;
+  top: 0;
       }
 
       .brand-block {
@@ -183,6 +185,7 @@
 
       .main-nav {
         font-size: 0.9rem;
+        margin-left: clamp(6px, 2vw, 32px);
       }
 
       .main-nav a {
@@ -206,6 +209,7 @@
         height: 2px;
         background: var(--ink);
         transition: width 0.2s ease;
+        
       }
 
       .breadcrumbs {
@@ -216,11 +220,14 @@
         flex-wrap: wrap;
         align-items: center;
         gap: 0.3ch;
+        color: #ffffff;
+        margin-left: clamp(16px, 4vw, 32px);
       }
 
       .breadcrumbs a {
         color: var(--muted);
         text-decoration: none;
+        color: #ffffff;
       }
 
       .breadcrumbs a:hover {
@@ -358,6 +365,14 @@
         text-decoration: none;
       }
 
+      section {
+        scroll-margin-top: 90px;
+      }
+
+      h1{
+        color: #1f6f3b;
+      }
+
       .site-footer {
         margin-top: clamp(132px, 5vw, 64px);
         border-top: 1px solid rgba(0, 0, 0, 0.08);
@@ -444,22 +459,22 @@
     </section>
     <div class="wrap">
         <header class="page-header">
+          
             <nav class="main-nav" aria-label="Hauptnavigation">
-                <a href="/de/">Wohnungen</a>
+                <a href="#wohnungen">Wohnungen</a>
                 <a href="#preise">Preise</a>
-                <a href="reservierung">Reservierung</a>
+                <a href="#reservierung">Reservierung</a>
                 <a href="#umgebung">Umgebung</a>
                 <a href="#anreise">Anreise</a>
                 <a href="https://www.novehute.cz/novehute/webcam.asp" target="_blank" rel="noopener">Wetterkamera</a>
             </nav>
-        </header>
-    
-
-    <nav class="breadcrumbs" aria-label="Brotkrumen">
+            <nav class="breadcrumbs" aria-label="Brotkrumen">
         <a href="/de/">Startseite</a>
         <span aria-hidden="true">></span>
         <span aria-current="page">Apartment im Zentrum</span>
     </nav>
+        </header>
+    
 
     <nav class="lang-switch" aria-label="Sprachauswahl">
         <button class="lang-btn" aria-label="Sprache wählen">
@@ -505,25 +520,33 @@
           </a>
         </div>
       </nav>
-      <p>öalksdjföslkdjaföljdsöfldslkfjldsakjfölkjdsafölkjdsflökjdsöfalkjsdlökfjölkdsajfölkdsjföksaljdfösalkdjfökdsajfödsakjfösadkjföskjdfölkdsajölfkjdsaölkflskjdafnldaskfhlkjaflkdsjaföljdsaölfkjdaölkjföladjfölsdakjfölkdsajfölaskdjfölkjdsaölfdsaölföldsjöfdsöjkfdsaölkjfdölkjfdsjökfdsaölkjfdsaölkjfdsaölkjfdajsölkfdsaölkjdsafölkjdsaöljfödsalkjföljdsfölkjdsaölfjsaöldksajfölkjdsaföfdsalkj</p>
-      <p>öalksdjföslkdjaföljdsöfldslkfjldsakjfölkjdsafölkjdsflökjdsöfalkjsdlökfjölkdsajfölkdsjföksaljdfösalkdjfökdsajfödsakjfösadkjföskjdfölkdsajölfkjdsaölkflskjdafnldaskfhlkjaflkdsjaföljdsaölfkjdaölkjföladjfölsdakjfölkdsajfölaskdjfölkjdsaölfdsaölföldsjöfdsöjkfdsaölkjfdölkjfdsjökfdsaölkjfdsaölkjfdsaölkjfdajsölkfdsaölkjdsafölkjdsaöljfödsalkjföljdsfölkjdsaölfjsaöldksajfölkjdsaföfdsalkj</p>
-      <p>öalksdjföslkdjaföljdsöfldslkfjldsakjfölkjdsafölkjdsflökjdsöfalkjsdlökfjölkdsajfölkdsjföksaljdfösalkdjfökdsajfödsakjfösadkjföskjdfölkdsajölfkjdsaölkflskjdafnldaskfhlkjaflkdsjaföljdsaölfkjdaölkjföladjfölsdakjfölkdsajfölaskdjfölkjdsaölfdsaölföldsjöfdsöjkfdsaölkjfdölkjfdsjökfdsaölkjfdsaölkjfdsaölkjfdajsölkfdsaölkjdsafölkjdsaöljfödsalkjföljdsfölkjdsaölfjsaöldksajfölkjdsaföfdsalkj</p>
-      <p>öalksdjföslkdjaföljdsöfldslkfjldsakjfölkjdsafölkjdsflökjdsöfalkjsdlökfjölkdsajfölkdsjföksaljdfösalkdjfökdsajfödsakjfösadkjföskjdfölkdsajölfkjdsaölkflskjdafnldaskfhlkjaflkdsjaföljdsaölfkjdaölkjföladjfölsdakjfölkdsajfölaskdjfölkjdsaölfdsaölföldsjöfdsöjkfdsaölkjfdölkjfdsjökfdsaölkjfdsaölkjfdsaölkjfdajsölkfdsaölkjdsafölkjdsaöljfödsalkjföljdsfölkjdsaölfjsaöldksajfölkjdsaföfdsalkj</p>
-      <p>öalksdjföslkdjaföljdsöfldslkfjldsakjfölkjdsafölkjdsflökjdsöfalkjsdlökfjölkdsajfölkdsjföksaljdfösalkdjfökdsajfödsakjfösadkjföskjdfölkdsajölfkjdsaölkflskjdafnldaskfhlkjaflkdsjaföljdsaölfkjdaölkjföladjfölsdakjfölkdsajfölaskdjfölkjdsaölfdsaölföldsjöfdsöjkfdsaölkjfdölkjfdsjökfdsaölkjfdsaölkjfdsaölkjfdajsölkfdsaölkjdsafölkjdsaöljfödsalkjföljdsfölkjdsaölfjsaöldksajfölkjdsaföfdsalkj</p>
-      <p>öalksdjföslkdjaföljdsöfldslkfjldsakjfölkjdsafölkjdsflökjdsöfalkjsdlökfjölkdsajfölkdsjföksaljdfösalkdjfökdsajfödsakjfösadkjföskjdfölkdsajölfkjdsaölkflskjdafnldaskfhlkjaflkdsjaföljdsaölfkjdaölkjföladjfölsdakjfölkdsajfölaskdjfölkjdsaölfdsaölföldsjöfdsöjkfdsaölkjfdölkjfdsjökfdsaölkjfdsaölkjfdsaölkjfdajsölkfdsaölkjdsafölkjdsaöljfödsalkjföljdsfölkjdsaölfjsaöldksajfölkjdsaföfdsalkj</p>
-      <p>öalksdjföslkdjaföljdsöfldslkfjldsakjfölkjdsafölkjdsflökjdsöfalkjsdlökfjölkdsajfölkdsjföksaljdfösalkdjfökdsajfödsakjfösadkjföskjdfölkdsajölfkjdsaölkflskjdafnldaskfhlkjaflkdsjaföljdsaölfkjdaölkjföladjfölsdakjfölkdsajfölaskdjfölkjdsaölfdsaölföldsjöfdsöjkfdsaölkjfdölkjfdsjökfdsaölkjfdsaölkjfdsaölkjfdajsölkfdsaölkjdsafölkjdsaöljfödsalkjföljdsfölkjdsaölfjsaöldksajfölkjdsaföfdsalkj</p>
-      <p>öalksdjföslkdjaföljdsöfldslkfjldsakjfölkjdsafölkjdsflökjdsöfalkjsdlökfjölkdsajfölkdsjföksaljdfösalkdjfökdsajfödsakjfösadkjföskjdfölkdsajölfkjdsaölkflskjdafnldaskfhlkjaflkdsjaföljdsaölfkjdaölkjföladjfölsdakjfölkdsajfölaskdjfölkjdsaölfdsaölföldsjöfdsöjkfdsaölkjfdölkjfdsjökfdsaölkjfdsaölkjfdsaölkjfdajsölkfdsaölkjdsafölkjdsaöljfödsalkjföljdsfölkjdsaölfjsaöldksajfölkjdsaföfdsalkj</p>
-      <p>öalksdjföslkdjaföljdsöfldslkfjldsakjfölkjdsafölkjdsflökjdsöfalkjsdlökfjölkdsajfölkdsjföksaljdfösalkdjfökdsajfödsakjfösadkjföskjdfölkdsajölfkjdsaölkflskjdafnldaskfhlkjaflkdsjaföljdsaölfkjdaölkjföladjfölsdakjfölkdsajfölaskdjfölkjdsaölfdsaölföldsjöfdsöjkfdsaölkjfdölkjfdsjökfdsaölkjfdsaölkjfdsaölkjfdajsölkfdsaölkjdsafölkjdsaöljfödsalkjföljdsfölkjdsaölfjsaöldksajfölkjdsaföfdsalkj</p>
-      <p>öalksdjföslkdjaföljdsöfldslkfjldsakjfölkjdsafölkjdsflökjdsöfalkjsdlökfjölkdsajfölkdsjföksaljdfösalkdjfökdsajfödsakjfösadkjföskjdfölkdsajölfkjdsaölkflskjdafnldaskfhlkjaflkdsjaföljdsaölfkjdaölkjföladjfölsdakjfölkdsajfölaskdjfölkjdsaölfdsaölföldsjöfdsöjkfdsaölkjfdölkjfdsjökfdsaölkjfdsaölkjfdsaölkjfdajsölkfdsaölkjdsafölkjdsaöljfödsalkjföljdsfölkjdsaölfjsaöldksajfölkjdsaföfdsalkj</p>
-      <p>öalksdjföslkdjaföljdsöfldslkfjldsakjfölkjdsafölkjdsflökjdsöfalkjsdlökfjölkdsajfölkdsjföksaljdfösalkdjfökdsajfödsakjfösadkjföskjdfölkdsajölfkjdsaölkflskjdafnldaskfhlkjaflkdsjaföljdsaölfkjdaölkjföladjfölsdakjfölkdsajfölaskdjfölkjdsaölfdsaölföldsjöfdsöjkfdsaölkjfdölkjfdsjökfdsaölkjfdsaölkjfdsaölkjfdajsölkfdsaölkjdsafölkjdsaöljfödsalkjföljdsfölkjdsaölfjsaöldksajfölkjdsaföfdsalkj</p>
-      <p>öalksdjföslkdjaföljdsöfldslkfjldsakjfölkjdsafölkjdsflökjdsöfalkjsdlökfjölkdsajfölkdsjföksaljdfösalkdjfökdsajfödsakjfösadkjföskjdfölkdsajölfkjdsaölkflskjdafnldaskfhlkjaflkdsjaföljdsaölfkjdaölkjföladjfölsdakjfölkdsajfölaskdjfölkjdsaölfdsaölföldsjöfdsöjkfdsaölkjfdölkjfdsjökfdsaölkjfdsaölkjfdsaölkjfdajsölkfdsaölkjdsafölkjdsaöljfödsalkjföljdsfölkjdsaölfjsaöldksajfölkjdsaföfdsalkj</p>
-      <p>öalksdjföslkdjaföljdsöfldslkfjldsakjfölkjdsafölkjdsflökjdsöfalkjsdlökfjölkdsajfölkdsjföksaljdfösalkdjfökdsajfödsakjfösadkjföskjdfölkdsajölfkjdsaölkflskjdafnldaskfhlkjaflkdsjaföljdsaölfkjdaölkjföladjfölsdakjfölkdsajfölaskdjfölkjdsaölfdsaölföldsjöfdsöjkfdsaölkjfdölkjfdsjökfdsaölkjfdsaölkjfdsaölkjfdajsölkfdsaölkjdsafölkjdsaöljfödsalkjföljdsfölkjdsaölfjsaöldksajfölkjdsaföfdsalkj</p>
-      <p>öalksdjföslkdjaföljdsöfldslkfjldsakjfölkjdsafölkjdsflökjdsöfalkjsdlökfjölkdsajfölkdsjföksaljdfösalkdjfökdsajfödsakjfösadkjföskjdfölkdsajölfkjdsaölkflskjdafnldaskfhlkjaflkdsjaföljdsaölfkjdaölkjföladjfölsdakjfölkdsajfölaskdjfölkjdsaölfdsaölföldsjöfdsöjkfdsaölkjfdölkjfdsjökfdsaölkjfdsaölkjfdsaölkjfdajsölkfdsaölkjdsafölkjdsaöljfödsalkjföljdsfölkjdsaölfjsaöldksajfölkjdsaföfdsalkj</p>
-      <p>öalksdjföslkdjaföljdsöfldslkfjldsakjfölkjdsafölkjdsflökjdsöfalkjsdlökfjölkdsajfölkdsjföksaljdfösalkdjfökdsajfödsakjfösadkjföskjdfölkdsajölfkjdsaölkflskjdafnldaskfhlkjaflkdsjaföljdsaölfkjdaölkjföladjfölsdakjfölkdsajfölaskdjfölkjdsaölfdsaölföldsjöfdsöjkfdsaölkjfdölkjfdsjökfdsaölkjfdsaölkjfdsaölkjfdajsölkfdsaölkjdsafölkjdsaöljfödsalkjföljdsfölkjdsaölfjsaöldksajfölkjdsaföfdsalkj</p>
-      <p>öalksdjföslkdjaföljdsöfldslkfjldsakjfölkjdsafölkjdsflökjdsöfalkjsdlökfjölkdsajfölkdsjföksaljdfösalkdjfökdsajfödsakjfösadkjföskjdfölkdsajölfkjdsaölkflskjdafnldaskfhlkjaflkdsjaföljdsaölfkjdaölkjföladjfölsdakjfölkdsajfölaskdjfölkjdsaölfdsaölföldsjöfdsöjkfdsaölkjfdölkjfdsjökfdsaölkjfdsaölkjfdsaölkjfdajsölkfdsaölkjdsafölkjdsaöljfödsalkjföljdsfölkjdsaölfjsaöldksajfölkjdsaföfdsalkj</p>
-      <p>öalksdjföslkdjaföljdsöfldslkfjldsakjfölkjdsafölkjdsflökjdsöfalkjsdlökfjölkdsajfölkdsjföksaljdfösalkdjfökdsajfödsakjfösadkjföskjdfölkdsajölfkjdsaölkflskjdafnldaskfhlkjaflkdsjaföljdsaölfkjdaölkjföladjfölsdakjfölkdsajfölaskdjfölkjdsaölfdsaölföldsjöfdsöjkfdsaölkjfdölkjfdsjökfdsaölkjfdsaölkjfdsaölkjfdajsölkfdsaölkjdsafölkjdsaöljfödsalkjföljdsfölkjdsaölfjsaöldksajfölkjdsaföfdsalkj</p>
-      <p>öalksdjföslkdjaföljdsöfldslkfjldsakjfölkjdsafölkjdsflökjdsöfalkjsdlökfjölkdsajfölkdsjföksaljdfösalkdjfökdsajfödsakjfösadkjföskjdfölkdsajölfkjdsaölkflskjdafnldaskfhlkjaflkdsjaföljdsaölfkjdaölkjföladjfölsdakjfölkdsajfölaskdjfölkjdsaölfdsaölföldsjöfdsöjkfdsaölkjfdölkjfdsjökfdsaölkjfdsaölkjfdsaölkjfdajsölkfdsaölkjdsafölkjdsaöljfödsalkjföljdsfölkjdsaölfjsaöldksajfölkjdsaföfdsalkj</p>
-      <p>öalksdjföslkdjaföljdsöfldslkfjldsakjfölkjdsafölkjdsflökjdsöfalkjsdlökfjölkdsajfölkdsjföksaljdfösalkdjfökdsajfödsakjfösadkjföskjdfölkdsajölfkjdsaölkflskjdafnldaskfhlkjaflkdsjaföljdsaölfkjdaölkjföladjfölsdakjfölkdsajfölaskdjfölkjdsaölfdsaölföldsjöfdsöjkfdsaölkjfdölkjfdsjökfdsaölkjfdsaölkjfdsaölkjfdajsölkfdsaölkjdsafölkjdsaöljfödsalkjföljdsfölkjdsaölfjsaöldksajfölkjdsaföfdsalkj</p>
+
+      <h1>Ferienwohnung im Böhmerwald (Šumava) - Urlaub in Nové Hutě inmitten der Natur</h1>
+      <p>Willkommen in unserer Ferienwohnung im Böhmerwald, im ruhigen Ort Nové Hutě in Tschechien. Unser Haus liegt direkt am Rand des Landschafts- und Naturschutzgebiets Šumava und bietet ideale Voraussetzungen für einen erholsamen und zugleich aktiven Urlaub – zu jeder Jahreszeit.</p>
+      <p>Im Winter erreichen Sie Skipisten und Langlaufloipen in wenigen Minuten. Der Einstieg in die bekannte Šumava-Langlaufmagistrale (Bílá stopa) befindet sich direkt vor Ort. In Frühling, Sommer und Herbst laden zahlreiche Wanderwege, Radstrecken und Naturpfade dazu ein, den Böhmerwald zu Fuß oder mit dem Fahrrad zu entdecken.</p>
+      <p>Unsere Ferienwohnungen in Nové Hutě sind der perfekte Rückzugsort für alle, die Ruhe, Natur und frische Luft suchen. Abseits von Massentourismus genießen Sie hier Entspannung, klare Bergluft und eine ursprüngliche Landschaft – ideal für Paare, Familien und Naturliebhaber.</p>
+      <p>Ob Kurzurlaub, Wochenaufenthalt oder längere Auszeit: Ein Urlaub im Böhmerwald verbindet Erholung, Bewegung und Naturerlebnis auf besondere Weise.</p>
+      
+      <section id="wohnungen">
+        <h1>Wohnungen</h1>
+        <p>Text Text Text Text Text Text Text Text</p>
+      </section>
+      <section id="preise">
+        <h1>Preise</h1>
+        <p>Text Text Text Text Text Text Text Text</p>
+      </section>
+      <section id="reservierung">
+        <h1>Reservierung</h1>
+        <p>Text Text Text Text Text Text Text Text</p>
+      </section>
+      <section id="umgebung">
+        <h1>Umgebung</h1>
+        <p>Text Text Text Text Text Text Text Text</p>
+      </section>
+      <section id="anreise">
+        <h1>Anreise</h1>
+        <p>Text Text Text Text Text Text Text Text</p>
+      </section>
     <footer class="site-footer">
         <div class="footer-inner">
           <div class="footer-left">
